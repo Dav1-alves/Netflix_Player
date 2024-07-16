@@ -1,0 +1,345 @@
+body {
+    overflow: hidden;
+    background: #000000;
+}
+
+.video_container {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+}
+
+video {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+
+    transition: 1s;
+}
+
+
+.info_VIDEO {
+    position: fixed;
+    top: 50%;
+    left: 15%;
+    transform: translate(-15%, -45%);
+
+    width: 580px;
+    height: 250px;
+}
+
+.info_VIDEO h3 {
+    font-size: 2.5rem;
+}
+
+.info_VIDEO p {
+    color: #dedede87;
+    margin: 25px 0px;
+}
+
+.pause_TIME {
+    opacity: 1;
+    transition: all 500ms;
+}
+
+.pause_TIME.disabled {
+    opacity: 0;
+}
+
+.video_container {
+    opacity: 0.2;
+    z-index: -1;
+    transition: all 250ms ease-in-out;
+}
+
+.video_container.disabled {
+    opacity: 1;
+    z-index: 999;
+}
+
+.video_controls_container {
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    z-index: 9999;
+    opacity: 0;
+
+    transition: opacity 250ms ease-in-out;
+
+    color: white;
+}
+
+.video_container .controls {
+    width: 100%;
+    height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.video_container .controls .OPTIONS_basic {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video_container .controls .OPTIONS_basic button {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    color: white;
+    background: 0;
+    border: 0;
+}
+
+.video_container .controls .OPTIONS_basic .play-pause_btn {
+    height: 50px;
+    font-size: 6.4rem;
+    outline: none;
+    transition: 350ms;
+}
+
+.video_container .controls .OPTIONS_basic .play-pause_btn:hover {
+    scale: 1.3;
+}
+
+.video_container .controls .OPTIONS_basic .play-pause_btn:active {
+    scale: 1;
+}
+
+.video_container .controls .OPTIONS_basic .action {
+    margin: 0px 25%;
+    font-size: 1.2rem;
+
+    opacity: 0.40;
+    transition: 250ms all;
+}
+
+.video_container .controls .OPTIONS_basic .action:hover {
+    opacity: 0.7;
+    scale: 1.2;
+}
+
+.video_container .controls .OPTIONS_basic .action:active {
+    opacity: 1;
+    scale: 1;
+}
+
+.video_container .controls .conf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 80px;
+}
+
+.video_container .controls .conf .buttons {
+    display: flex;
+}
+
+.video_container .controls .conf .volume {
+    display: flex;
+    align-items: center;
+
+    rotate: -90deg;
+    translate: 0% -60px;
+}
+
+.video_container .controls .conf .volume input[type=range] {
+    height: 0%;
+    opacity: 0;
+    margin-left: 15px;
+    width: 100px;
+
+    transition: all 250ms ease-in-out;
+}
+
+.video_container .controls .conf .volume:hover input[type=range] {
+    -webkit-appearance: none;
+    background: #212121;
+    height: 10%;
+    opacity: 1;
+    margin-left: 15px;
+    width: 100px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .1s;
+    transition: opacity .1s;
+    border-radius: 5px;
+}
+
+.video_container .controls .conf .volume:hover input[type=range] {
+    opacity: 1;
+}
+
+.video_container .controls .conf .volume:hover input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50px;
+    background: #7b0000;
+    cursor: pointer;
+}
+
+.video_container .controls .conf .volume button {
+    rotate: 90deg;
+
+    padding: 10px;
+    font-size: 1.6rem;
+
+    background: 0;
+    border: 0;
+    color: white;
+}
+
+.video_container .controls .conf .volume button .bx-volume-full,
+.bx-volume-low,
+.bx-volume-mute {
+    display: none;
+}
+
+.video_container[data-volume-level="high"] .controls .conf .volume .bx-volume-full {
+    display: block;
+}
+
+.video_container[data-volume-level="low"] .controls .conf .volume .bx-volume-low {
+    display: block;
+}
+
+.video_container[data-volume-level="muted"] .controls .conf .volume .bx-volume-mute {
+    display: block;
+}
+
+.video_controls_container {
+    padding: 0px 45px;
+}
+
+.video_container:hover .video_controls_container {
+    opacity: 1;
+}
+
+.video_container.paused .video_controls_container {
+    opacity: 1 !important;
+}
+
+.video_container:not(.disabled) .video_controls_container {
+    opacity: 0 !important;
+}
+
+.video_container.paused .controls button .bx-pause {
+    display: none;
+}
+
+.video_container:not(.paused) .controls button .bx-pause {
+    display: block;
+}
+
+.video_container:not(.paused) .controls button .bx-play {
+    display: none;
+}
+
+.fullscreen {
+    width: 50px;
+    background: 0;
+    font-size: 1.6rem;
+    border: 0;
+    color: white;
+}
+
+.fullscreen:not(.active) i:nth-child(2) {
+    display: none;
+}
+
+.fullscreen.active i:nth-child(1) {
+    display: none;
+}
+
+/* TimeLine */
+
+.container_timeline {
+    display: flex;
+    align-items: center;
+}
+
+.container_timeline .duration {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    flex-grow: 1;
+}
+
+.timeline_bg {
+    height: 7px;
+    width: 70%;
+    margin-inline: .5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.timeline_bg:hover .timeline {
+    height: 100%;
+}
+
+.timeline {
+    background: rgba(100, 100, 100, .5);
+    height: 3px;
+    width: 100%;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: calc(100% - var(--preview-progress) * 100%);
+    background: rgb(150, 150, 150);
+    display: none;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: calc(100% - var(--progress-position, .0) * 100%);
+    background: red;
+}
+
+.timeline .thumb_indicator {
+    --scale: 0;
+    position: absolute;
+    transform: translate(-50%) scale(var(--scale));
+    height: 200%;
+    top: -50%;
+    left: calc(var(--progress-position) * 100%);
+    background: red;
+    border-radius: 50%;
+    transition: transform 150ms ease-in-out;
+    aspect-ratio: 1 / 1;
+}
+
+.timeline:hover .thumb_indicator {
+    --scale: 1;
+}
+
+.video_container.scrubbing .timeline::before,
+.timeline_bg:hover .timeline::before {
+    display: block;
+}

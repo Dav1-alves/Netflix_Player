@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="video.css">
+    <title>Video</title>
+</head>
+
+<body>
+    <div class="load_video">
+        <div class="loader"></div>
+    </div>
+    <div class="typewriter_bg">
+
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+    </div>
+    <div class="video_container paused" data-volume-level="low">
+        <video>
+            <!-- <source
+                src="https://www.dropbox.com/scl/fi/fo40bu1lcugk3v0yan0q8/Video-Teste.mp4?rlkey=b7vkmndxy4grpthzf54m0o6p9&raw=1"
+                type=""> -->
+            <source
+                src="Harry potter e o calice de fogo.mp4"
+                type="">
+        </video>
+        <div class="video_controls_container">
+            <div class="controls">
+                <a href="">
+                    <button class="back" id="back">
+                        <i class='bx bx-arrow-back'></i> Back
+                    </button>
+                </a>
+
+                <div class="OPTIONS_basic">
+                    <button class="action" id="skip_SMALL" onclick="skip(this.id)">
+                        <span>-10</span>
+                    </button>
+
+                    <button class="play-pause_btn" onclick="togglePlay()">
+                        <i class='bx bx-play'></i>
+                        <i class='bx bx-pause'></i>
+                    </button>
+
+                    <button class="action" id="skip_PLUS" onclick="skip(this.id)">
+                        <span>+10</span>
+                    </button>
+                </div>
+
+                <div class="conf">
+                    <div class="container_timeline">
+                        <div class="duration">
+                            <div class="current_time">0:00</div>
+                            /
+                            <div class="total_time"></div>
+                        </div>
+                    </div>
+                    <div class="timeline_bg">
+                        <div class="timeline">
+                            <div class="thumb_indicator"></div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="volume">
+                            <button>
+                                <i class='bx bx-volume-full'></i>
+                                <i class='bx bx-volume-low'></i>
+                                <i class='bx bx-volume-mute'></i>
+                            </button>
+                            <input type="range" min="0" max="1" value="0.3" step="any" id="volume_RANGE"
+                                onchange="volume()">
+                        </div>
+
+                        <button class="fullscreen" onclick="fullscreen()">
+                            <i class='bx bx-fullscreen'></i>
+                            <i class='bx bx-exit-fullscreen'></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pause_TIME">
+        <a href="">
+            <button class="back" id="back">
+                <i class='bx bx-arrow-back'></i> Back
+            </button>
+        </a>
+
+        <div class="info_VIDEO">
+            <div class="info_CURSO">
+                <h3>Harry Potter e o Cálice de Fogo</h3>
+                <p>Harry retorna para seu quarto ano na Escola de Magia e Bruxaria de Hogwarts, junto com os seus amigos Ron e Hermione. Desta vez, acontece um torneio entre as três maiores escola de magia, com um participante selecionado de cada escola, pelo Cálice de Fogo. O nome de Harry aparece, mesmo não tendo se inscrito, e ele precisa competir.</p>
+            </div>
+            <button onclick="play_START()" class="play_MAIN">
+                <span>Assistir</span>
+            </button>
+
+        </div>
+    </div>
+
+    <script src="global.js"></script>
+    <script src="systemVIDEO.js"></script>
+</body>
+
+</html>
